@@ -48,8 +48,6 @@ prometheus:
   prometheusSpec:
     replicas: 1
     maximumStartupDurationSeconds: 120
-    remoteWrite:
-      - url: http://mimir-gateway/api/v1/push
     serviceMonitorSelector:
       matchLabels:
         release: prometheus
