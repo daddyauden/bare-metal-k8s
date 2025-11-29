@@ -2,11 +2,11 @@
 set -e
 
 
-CONTROL_PLANE_HOST=192.168.1.25
+CONTROL_PLANE_HOST=192.168.1.100
 
-TOKEN=""
-HASH=""
-CERT_KEY=""
+TOKEN="X"
+HASH="X"
+CERT_KEY="X"
 
 if [ "$TOKEN" = "X" ] || [ "$HASH" = "X" ] || [ "$CERT_KEY" = "X" ]; then
     echo "you need to run 2-master-control-plane-init.sh first, and then get token and hash value or run the command in first control plane: kubeadm token create --print-join-command"

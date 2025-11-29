@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-CONTROL_PLANE_HOST=192.168.1.25
+CONTROL_PLANE_HOST=192.168.1.100
 
-TOKEN=""
-HASH=""
+TOKEN="X"
+HASH="X"
 
 ################################ worker节点 ################################
 if [ "$TOKEN" = "X" ] || [ "$HASH" = "X" ] || [ "$CERT_KEY" = "X" ]; then
