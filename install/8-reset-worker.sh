@@ -21,5 +21,3 @@ sudo rm -rf /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 sudo rm -rf /var/lib/containerd
 
 sudo ip route flush proto bird
-
-ls -la ~/.kube /etc/kubernetes /var/lib/kubelet

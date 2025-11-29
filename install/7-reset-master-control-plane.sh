@@ -3,13 +3,13 @@ set -e
 
 sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t mangle -F
 
-kubectl delete deployments --all --all-namespaces
-kubectl delete statefulsets --all --all-namespaces
-kubectl delete daemonsets --all --all-namespaces
-kubectl delete all --all --all-namespaces
+kubectl delete deployments --all --all-namespaces --force
+kubectl delete statefulsets --all --all-namespaces --force
+kubectl delete daemonsets --all --all-namespaces --force
+kubectl delete all --all --all-namespaces --force
 
-kubectl delete pv --all
-kubectl delete pvc --all
+kubectl delete pv --all --force
+kubectl delete pvc --all --force
 
 sudo kubeadm reset --force
 
