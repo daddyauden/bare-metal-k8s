@@ -15,12 +15,12 @@ controller:
       https: 30443
   admissionWebhooks:
     enabled: false
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-      additionalLabels:
-        release: prometheus
+  # metrics:
+  #   enabled: true
+  #   serviceMonitor:
+  #     enabled: true
+  #     additionalLabels:
+  #       release: prometheus
   resources:
     requests:
       cpu: 50m

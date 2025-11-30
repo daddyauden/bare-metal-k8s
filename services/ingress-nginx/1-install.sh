@@ -15,6 +15,6 @@ metadata:
     pod-security.kubernetes.io/enforce-version: v1.31
 EOF
 
-helm install ingress-nginx ingress-nginx/ingress-nginx --version 4.13.0 --namespace ingress-nginx --create-namespace -f values.yaml
+helm install ingress-nginx ingress-nginx/ingress-nginx --version 4.14.0 --namespace ingress-nginx --create-namespace -f values.yaml
 
 # helm upgrade ingress-nginx ingress-nginx/ingress-nginx --install --namespace ingress-nginx --create-namespace -f values.yaml --set controller.config.use-forwarded-headers="true" --set controller.config.enable-real-ip="true"

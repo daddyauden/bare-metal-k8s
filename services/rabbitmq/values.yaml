@@ -1,19 +1,26 @@
-global:
-  defaultStorageClass: rook-ceph-block
+replicaCount: 1
 
 auth:
-  username: rabbitmq-admin
-  existingPasswordSecret: rabbitmq-secrets
-  existingSecretPasswordKey: rabbitmq-password
-
-logs: false
-
-clustering:
   enabled: true
-  forceBoot: true
-  partitionHandling: autoheal
+  username: admin
+  existingSecret: rabbitmq-secrets
+  existingPasswordKey: rabbitmq-password
+  existingErlangCookieKey: rabbitmq-cookie
 
-replicaCount: 1
+config:
+  logging:
+    console:
+      enabled: true
+    file:
+      enabled: true
+    level: "info"
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  storageClass: rook-ceph-block
+  size: 10Gi
 
 resources:
   requests:
@@ -23,42 +30,19 @@ resources:
     cpu: 400m
     memory: 256Mi
 
-persistence:
+persistentVolumeClaimRetentionPolicy:
   enabled: true
-  storageClass: rook-ceph-block
-  size: 5Gi
-
-volumePermissions:
-  enabled: true
-  resources:
-    requests:
-      cpu: 50m
-      memory: 64Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
+  whenDeleted: Delete
+  whenScaled: Delete
 
 ingress:
   enabled: true
-  ingressClassName: "nginx"
-  hostname: ""
-  path: /
-  pathType: Prefix
+  className: "nginx"
+  hosts:
+    - host:
+      paths:
+        - path: /
+          pathType: Prefix
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  tls: true
-
-metrics:
-  enabled: true
-  serviceMonitor:
-    enabled: true
-    interval: 120s
-    default:
-      enabled: true
-    perObject:
-      enabled: true
-    detailed:
-      enabled: true
-    labels:
-      release: prometheus

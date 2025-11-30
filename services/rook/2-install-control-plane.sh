@@ -15,9 +15,7 @@ cd rook/deploy/examples
 
 NS=rook-ceph
 
-kubectl apply -f crds.yaml
-kubectl apply -f common.yaml
-kubectl apply -f operator.yaml
+kubectl apply -f crds.yaml -f common.yaml -f csi-operator.yaml -f operator.yaml
 
 ##### update placement and storage base on your requirements
 # storage:
